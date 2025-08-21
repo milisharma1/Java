@@ -27,5 +27,5 @@ public class Movie {
     private String genre;
 
     @Column(nullable = false)
-    private String releaseDate;
+    private String releaseYear;
 }
