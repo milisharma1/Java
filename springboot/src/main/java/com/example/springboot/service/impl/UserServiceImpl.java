@@ -48,17 +48,17 @@ public class UserServiceImpl implements UserService {
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
+    @Override
+    public boolean validateUser(String username, String rawPassword) {
+        Optional<User> userOpt = userRepository.findByUsername(username);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            // compare raw password with encoded password
+            return passwordEncoder.matches(rawPassword, user.getPassword());
+        }
+        return false;
+    }
+
 }
 
-    /*
-        @Override
-        public boolean existsByUsername(String username) {
-            return userRepository.existsByUsername(username);
-        }
-
-        @Override
-        public boolean existsByEmail(String email) {
-            return userRepository.existsByEmail(email);
-        }
-    }*/
 

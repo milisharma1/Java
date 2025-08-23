@@ -15,4 +15,7 @@ public interface UserService {
     boolean existsByUsername(String username);
 
     boolean existsByEmail(String email);
+
+    boolean validateUser(String username, String password);
+
 }
